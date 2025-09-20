@@ -1,24 +1,32 @@
 .nav-bar-container {
   display: flex;
   justify-content: center;
-  background-color: #ffffff33;
-  padding: 8px;
+  background: linear-gradient(90deg, #ff6a88, #ff99ac);
+  padding: 12px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .title-with-score-container {
   display: flex;
   justify-content: space-between;
-  flex-basis: 80%;
+  align-items: center;
+  flex-basis: 85%;
   max-width: 1000px;
 }
 
 .logo-and-title-container {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
 .emoji-logo {
-  width: 24px;
+  width: 32px;
+  transition: transform 0.2s ease;
+}
+
+.emoji-logo:hover {
+  transform: scale(1.2);
 }
 
 @media screen and (min-width: 768px) {
@@ -29,32 +37,31 @@
 
 .title {
   color: #ffffff;
-  font-family: 'Roboto';
-  font-size: 16px;
-  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 @media screen and (min-width: 768px) {
   .title {
-    font-size: 24px;
+    font-size: 28px;
   }
 }
 
 .scores-container {
   display: flex;
+  gap: 20px;
 }
 
 .score {
   color: #ffffff;
-  font-family: 'Roboto';
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
-  font-weight: 500;
-  margin-left: 16px;
+  font-weight: 600;
 }
 
 @media screen and (min-width: 768px) {
   .score {
-    font-size: 24px;
-    margin-left: 32px;
+    font-size: 22px;
   }
 }

@@ -1,8 +1,10 @@
 .emoji-item {
   width: 32%;
-  list-style-type: none;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  list-style: none;
+  margin: 8px 1%;
+  display: inline-block;
+  vertical-align: top;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 @media screen and (min-width: 992px) {
@@ -12,13 +14,18 @@
 }
 
 .emoji-btn {
-  background-color: #ffffff33;
+  background: rgba(10, 25, 80, 0.85);
   cursor: pointer;
   outline: none;
   width: 100%;
-  height: 100px;
-  border: 3px solid #ffffff30;
-  border-radius: 24px;
+  height: 120px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
 
 @media screen and (min-width: 768px) {
@@ -27,12 +34,23 @@
   }
 }
 
+.emoji-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+  background: rgba(20, 40, 120, 0.9);
+}
+
 .emoji-icon {
   width: 50px;
+  transition: transform 0.2s ease;
 }
 
 @media screen and (min-width: 768px) {
   .emoji-icon {
     width: 100px;
   }
+}
+
+.emoji-btn:hover .emoji-icon {
+  transform: scale(1.2);
 }

@@ -1,9 +1,7 @@
-import {Component} from 'react'
-
+import { Component } from 'react'
 import EmojiCard from '../EmojiCard'
 import NavBar from '../NavBar'
 import WinOrLoseCard from '../WinOrLoseCard'
-
 import './index.css'
 
 class EmojiGame extends Component {
@@ -14,14 +12,13 @@ class EmojiGame extends Component {
   }
 
   resetGame = () => {
-    this.setState({clickedEmojisList: [], isGameInProgress: true})
+    this.setState({ clickedEmojisList: [], isGameInProgress: true })
   }
 
   renderScoreCard = () => {
-    const {emojisList} = this.props
-    const {clickedEmojisList} = this.state
+    const { emojisList } = this.props
+    const { clickedEmojisList } = this.state
     const isWon = clickedEmojisList.length === emojisList.length
-
     return (
       <WinOrLoseCard
         isWon={isWon}
@@ -32,19 +29,14 @@ class EmojiGame extends Component {
   }
 
   finishGameAndSetTopScore = currentScore => {
-    const {topScore} = this.state
-    let newTopScore = topScore
-
-    if (currentScore > topScore) {
-      newTopScore = currentScore
-    }
-
-    this.setState({topScore: newTopScore, isGameInProgress: false})
+    const { topScore } = this.state
+    const newTopScore = currentScore > topScore ? currentScore : topScore
+    this.setState({ topScore: newTopScore, isGameInProgress: false })
   }
 
   clickEmoji = id => {
-    const {emojisList} = this.props
-    const {clickedEmojisList} = this.state
+    const { emojisList } = this.props
+    const { clickedEmojisList } = this.state
     const isEmojiPresent = clickedEmojisList.includes(id)
     const clickedEmojisLength = clickedEmojisList.length
 
@@ -54,27 +46,25 @@ class EmojiGame extends Component {
       if (emojisList.length - 1 === clickedEmojisLength) {
         this.finishGameAndSetTopScore(emojisList.length)
       }
-      this.setState(previousState => ({
-        clickedEmojisList: [...previousState.clickedEmojisList, id],
+      this.setState(prev => ({
+        clickedEmojisList: [...prev.clickedEmojisList, id],
       }))
     }
   }
 
   getShuffledEmojisList = () => {
-    const {emojisList} = this.props
-
+    const { emojisList } = this.props
     return emojisList.sort(() => Math.random() - 0.5)
   }
 
   renderEmojisList = () => {
     const shuffledEmojisList = this.getShuffledEmojisList()
-
     return (
       <ul className="emojis-list-container">
-        {shuffledEmojisList.map(emojiObject => (
+        {shuffledEmojisList.map(emoji => (
           <EmojiCard
-            key={emojiObject.id}
-            emojiDetails={emojiObject}
+            key={emoji.id}
+            emojiDetails={emoji}
             clickEmoji={this.clickEmoji}
           />
         ))}
@@ -83,15 +73,39 @@ class EmojiGame extends Component {
   }
 
   render() {
-    const {clickedEmojisList, isGameInProgress, topScore} = this.state
+    const { clickedEmojisList, isGameInProgress, topScore } = this.state
 
     return (
       <div className="app-container">
+        <video autoPlay loop muted className="background-video">
+          <source src="/emoji-bg.mp4" type="video/mp4" />
+        </video>
+
+        {/* Floating emojis behind cards */}
+        <div className="floating-emoji-container">
+          {[...Array(40)].map((_, idx) => (
+            <span
+              key={idx}
+              className="floating-emoji"
+              style={{
+                left: `${Math.random() * 100}vw`,
+                top: `${Math.random() * 100}vh`,
+                fontSize: `${15 + Math.random() * 40}px`,
+                animationDuration: `${10 + Math.random() * 20}s`,
+                animationDelay: `${Math.random() * 10}s`,
+              }}
+            >
+              {['😄','😂','😍','🥰','🤩','😎','🤗','🤔'][Math.floor(Math.random() * 8)]}
+            </span>
+          ))}
+        </div>
+
         <NavBar
           currentScore={clickedEmojisList.length}
           isGameInProgress={isGameInProgress}
           topScore={topScore}
         />
+
         <div className="emoji-game-body">
           {isGameInProgress ? this.renderEmojisList() : this.renderScoreCard()}
         </div>

@@ -2,17 +2,22 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #ffffff33;
+  background: rgba(20, 30, 90, 0.85);
+  backdrop-filter: blur(10px);
   width: 85%;
-  border: 3px solid #ffffff30;
   border-radius: 24px;
   margin: auto;
-  padding: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.win-or-lose-card:hover {
+  transform: translateY(-5px);
 }
 
 @media screen and (min-width: 768px) {
   .win-or-lose-card {
-    width: 80%;
     padding: 32px;
   }
 }
@@ -36,19 +41,21 @@
   justify-content: center;
   align-items: center;
   order: 1;
+  gap: 16px;
 }
 
 @media screen and (min-width: 992px) {
   .details-section {
     order: 0;
+    align-items: flex-start;
   }
 }
 
 .game-status {
   color: #ffffff;
-  font-family: 'Roboto';
+  font-family: 'Poppins', sans-serif;
   font-size: 32px;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 @media screen and (min-width: 992px) {
@@ -58,12 +65,11 @@
 }
 
 .current-score-label {
-  text-align: center;
-  color: #ffffff;
-  font-family: 'Roboto';
+  color: #d0e8ff;
+  font-family: 'Poppins', sans-serif;
   font-size: 18px;
-  font-weight: bold;
-  margin: 0px;
+  font-weight: 600;
+  margin: 0;
 }
 
 @media screen and (min-width: 992px) {
@@ -73,12 +79,11 @@
 }
 
 .current-score-value {
-  text-align: center;
-  color: #6a59ff;
-  font-family: 'Roboto';
+  color: #00ffff;
+  font-family: 'Poppins', sans-serif;
   font-size: 32px;
-  font-weight: bold;
-  margin: 0px;
+  font-weight: 700;
+  margin: 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -88,36 +93,46 @@
 }
 
 .play-again-button {
-  color: #3d3d3d;
-  background-color: #ffce27;
-  font-family: 'Roboto';
+  color: #ffffff;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 700;
   border: none;
-  border-radius: 20px;
-  margin: 16px;
-  padding: 16px;
-  padding-right: 24px;
-  padding-left: 24px;
+  border-radius: 25px;
+  margin-top: 16px;
+  padding: 12px 24px;
   cursor: pointer;
   outline: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+.play-again-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(135deg, #2a5298, #1e3c72);
 }
 
 .image-section {
   display: flex;
   justify-content: center;
   order: 0;
+  margin-top: 20px;
 }
 
 @media screen and (min-width: 992px) {
   .image-section {
     order: 1;
+    margin-top: 0;
+    justify-content: flex-end;
   }
 }
 
 .win-or-lose-image {
   width: 150px;
   height: 200px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 @media screen and (min-width: 992px) {

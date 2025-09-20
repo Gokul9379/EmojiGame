@@ -1,27 +1,73 @@
 .app-container {
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(
-    to bottom right,
-    #9796f0 0.5%,
-    #fbc7d4 150%
-  );
   min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow: hidden;
+  background: #0a1930;
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.4);
 }
 
 .emoji-game-body {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
+  padding: 20px 0;
+  width: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.floating-emoji {
+  position: absolute;
+  pointer-events: none;
+  animation: roam linear infinite;
+  z-index: 0;
+}
+
+@keyframes roam {
+  0% {
+    transform: translate(0vw, 0vh) rotate(0deg);
+  }
+  25% {
+    transform: translate(20vw, 30vh) rotate(90deg);
+  }
+  50% {
+    transform: translate(-10vw, 50vh) rotate(180deg);
+  }
+  75% {
+    transform: translate(30vw, 70vh) rotate(270deg);
+  }
+  100% {
+    transform: translate(0vw, 100vh) rotate(360deg);
+  }
 }
 
 .emojis-list-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  width: 80%;
-  margin: auto;
-  padding: 0px;
+  width: 90%;
   max-width: 1000px;
+  margin: 20px auto;
+  gap: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .emojis-list-container {
+    gap: 20px;
+  }
 }
