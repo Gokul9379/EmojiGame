@@ -1,11 +1,10 @@
 .emoji-item {
-  width: 32%;
-  list-style: none;
-  margin: 8px 1%;
-  display: inline-block;
-  vertical-align: top;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: calc(27.33% - 10px); 
+  list-style-type: none;
+  margin: 5px;
 }
+
+
 
 @media screen and (min-width: 992px) {
   .emoji-item {

@@ -36,7 +36,11 @@
   pointer-events: none;
   animation: roam linear infinite;
   z-index: 0;
+  opacity: 0.8; /* softer look */
+  filter: saturate(0.6) brightness(0.8) drop-shadow(0 0 2px rgba(255, 255, 255, 0.1)); /* faded, less glow */
+  transform: scale(0.8); /* slightly smaller so it feels background-y */
 }
+
 
 @keyframes roam {
   0% {
@@ -58,16 +62,29 @@
 
 .emojis-list-container {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  width: 90%;
-  max-width: 1000px;
-  margin: 20px auto;
-  gap: 15px;
+  gap: 8px; /* space between emojis */
+  width: 100%; /* take full width */
+  margin: 0; /* remove auto margin */
+  justify-content: center; 
+  padding: 0 2px; 
 }
 
 @media screen and (min-width: 768px) {
+  .emoji-item {
+    width: calc(25% - 15px); /* 4 per row */
+    margin: 5px 0; /* optional vertical margin */
+    padding: 0 3px; /* remove extra padding unless needed */
+  }
+
   .emojis-list-container {
-    gap: 20px;
+    padding:0 150px;
+    gap: 15px; /* space between emojis */
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .emoji-item {
+    width: calc(25% - 20px); /* keeps 4 per row, adjust gap if needed */
   }
 }
