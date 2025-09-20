@@ -36,7 +36,7 @@
   pointer-events: none;
   animation: roam linear infinite;
   z-index: 0;
-  opacity: 0.8; /* softer look */
+  opacity: 0.5; /* softer look */
   filter: saturate(0.6) brightness(0.8) drop-shadow(0 0 2px rgba(255, 255, 255, 0.1)); /* faded, less glow */
   transform: scale(0.8); /* slightly smaller so it feels background-y */
 }
